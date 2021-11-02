@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Coffee Orders</title>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="barista.css"> 
+   </head>
+   <body>
+      <section >
+         <a class="logoutBtn" href="/logout"><span class="fa fa-user"></span>Logout</a>
+      </section>
+
+      <a href="/"><img src="img/barista.png"></a>
+
+   <section class="await">
+      <h3 class="">Awaiting Orders</h3>
+      <div class="new-orders">
+         <ul>
+         <% for(let i=0; i<awaiting.length; i++) {%>
+            <% console.log(awaiting[i]) %>
+            <% if(awaiting[i].awaiting === true){ %>
+               <li class="barista2">Barista: <%= awaiting[i].barista %></li>
+               <li class="customer2">Customer: <%= awaiting[i].customer %></li>
+               <li class="beverage2">Beverage: <%= awaiting[i]['beverage'] %></li>
+               <li class="size2">Size: <%= awaiting[i]['size'] %></li>
+               <div class="awaitBtns">
+                  <button id="<%= awaiting[i]._id %>" value="<%= awaiting[i].customer %>" class="complete-order">Complete Order</button>
+                  <span><i class="fa fa-trash" data-id="<%= awaiting[i]._id %>" aria-hidden="true"></i></span>
+               </div>
+            <% } %>
+         <% } %> 
+         </ul>
+      </div>
+   </section>
+   
+   <section class="complete">
+      <h3 class="">Completed Orders</h3>
+      <div class="completed-orders">
+         <button class="clear-all-completed">Clear All Completed</button>
+         <ul>
+         <% for(let i=0; i<completed.length; i++) {%>
+            <li class="barista2">Barista: <%= completed[i].barista %></li>
+            <li class="customer2">Customer: <%= completed[i].customer %></li>
+            <li class="beverage2">Beverage: <%= completed[i]['beverage'] %></li>
+            <li class="size2">Size: <%= completed[i]['size'] %></li>
+            <button id="<%= completed[i]._id %>" class="clear-completed" data-id="<%= completed[i]._id %>">Clear Completed</button>
+         <% } %>
+         </ul>
+      </div>
+   </section>
+
+      <script src="https://kit.fontawesome.com/c0e668a8ad.js" crossorigin="anonymous"></script>
+      
+      <script src="main.js"></script>
+   </body>
+</html>
+
